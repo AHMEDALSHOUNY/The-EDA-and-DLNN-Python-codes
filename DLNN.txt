@@ -1,0 +1,50 @@
+import numpy as np
+import pandas as pd
+from keras.layers import Dense, Activation
+from keras.models import Sequential
+from sklearn.model_selection import train_test_split
+# dataset
+df = pd.read('....')
+print (df)
+dataset = df.values
+
+# split into input (X) and output (y) variables
+X = dataset[:,0:11]
+y = dataset[:,11]
+# Initialising the ANN
+model = Sequential()
+# Splitting the dataset into the Training set and Test set
+X_train, X_test, y_train, y_test = train_test_split(X, y, ....)
+# Feature Scaling
+from sklearn.preprocessing import StandardScaler
+sc = StandardScaler()
+X_train = sc.fit_transform(X_train)
+X_test = sc.transform(X_test)
+# Adding the input layer and the first hidden layer
+model.add(Dense(..., activation ='relu,Identity,Logistic,Tanh', input_dim =11))
+
+# Adding the second hidden layer
+model.add(Dense(..., activation ='relu,Identity,Logistic,Tanh'))
+
+# Adding the third hidden layer
+model.add(Dense(..., activation ='relu,Identity,Logistic,Tanh'))
+........
+......
+....
+...
+..
+.
+# Adding the output layer
+
+model.add(Dense(units = 1))
+
+# Compiling the ANN
+model.compile(optimizer = 'Quasi-Newton, Stochastic gradient descent, Adam', loss = 'mean_squared_error')
+
+# Fitting the ANN to the Training set
+model.fit(X_train, y_train,epochs = 5000)
+
+#make Predication
+y_pred = model.predict(X_test)
+
+
